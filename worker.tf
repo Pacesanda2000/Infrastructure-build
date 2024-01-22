@@ -1,8 +1,8 @@
 #### VM CREATION ####
 
 resource "vsphere_virtual_machine" "worker" {
-  count            = "3"
-  name             = "worker${count.index + 1}"
+  count            = "1"
+  name             = "workerik${count.index + 1}"
   num_cpus         = 4
   memory           = 4096
   folder           = "3.rocnik/3.rocnik_projekty/dmajoros"
