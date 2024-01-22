@@ -46,7 +46,7 @@ build-job:
 test-job:   
   stage: test    
   script:
-    - echo "ahoj!"
+    - echo "ahoj!."
 
 
 deploy-job:   
