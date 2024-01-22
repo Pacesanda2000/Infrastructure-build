@@ -29,7 +29,7 @@ before_script:
   - ls -la /usr/local/bin/
   - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip
   - sudo unzip /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip -d /usr/local/bin/
-  - sudo chmod +xw /usr/local/bin/terraform
+  - sudo chmod +x /usr/local/bin/terraform
 
 
 
