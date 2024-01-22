@@ -52,6 +52,7 @@ test-job:
 deploy-job:   
   stage: deploy    
   script:
+    - terraform init
     - terraform apply
 
 
