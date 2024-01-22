@@ -53,7 +53,7 @@ deploy-job:
   stage: deploy    
   script:
     - terraform init
-    - terraform apply
+    - terraform apply -auto-approve
 
 
 
