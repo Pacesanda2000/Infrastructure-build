@@ -52,7 +52,7 @@ data "vsphere_virtual_machine" "template" {
 
 resource "vsphere_virtual_machine" "master" {
   count            = "1"
-  name             = "master${count.index + 1}"
+  name             = "masterik${count.index + 1}"
   num_cpus         = 4
   memory           = 4096
   folder           = "3.rocnik/3.rocnik_projekty/dmajoros"
