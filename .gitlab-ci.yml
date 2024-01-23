@@ -24,7 +24,7 @@ test-job:
     - terraform plan -out=terraform.tfplan
   artifacts:
     paths:
-      - "terraform.tfstate"
+      - "terraform.tfplan"
 
 deploy-job:   
   stage: deploy    
@@ -37,7 +37,7 @@ destroy-job:
   stage: destroy
   script:
     #- terraform init
-    - terraform destroy -auto-approve terraform.tfstate
+    - terraform destroy -auto-approve -state=terraform.tfplan
   when: manual  
 
 
