@@ -18,6 +18,7 @@ test-job:
   stage: test    
   script:
     - terraform init
+    - terraform state list
     - terraform validate
     - terraform plan #-out=new_terraform.tfplan
 #  artifacts:
