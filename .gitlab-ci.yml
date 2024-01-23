@@ -7,12 +7,12 @@ variables:
   TF_VAR_vsphere_password: "$vsphere_password"
 
 before_script:
+  - rm -rf .terraform
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
   - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip
   - sudo unzip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
-  #- cd /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/
   - pwd
 
 test-job:   
@@ -23,21 +23,24 @@ test-job:
     - terraform plan -out=check.tfplan
   artifacts:
     paths:
-      - "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/check.tfplan"
+      - "check.tfplan"
 
 deploy-job:   
   stage: deploy    
   script:
     - terraform init
-    #- ls -la /usr/local/bin/terraform
-    - terraform apply -auto-approve "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/check.tfplan"
+    - terraform apply -auto-approve "check.tfplan"
+  dependencies:
+    - test
 
 destroy-job:  
   stage: destroy
   script:
     - terraform init
-    - terraform destroy -auto-approve "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/check.tfplan"
+    - terraform destroy -auto-approve 
   when: manual  
+  dependencies:
+    - deploy
 
 
 
