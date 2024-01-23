@@ -10,6 +10,12 @@ variable "vsphere_server" {
   description = "server"
 }
 
+variable "vsphere_password" {
+  type        = string
+  #default     = "Pacesanda2000."
+  description = "password"
+}
+
 variable "vm_name" {
   description = "VM Names"
   default     = "serverik-"
