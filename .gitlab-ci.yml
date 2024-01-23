@@ -30,8 +30,6 @@ deploy-job:
   script:
     - terraform init
     - terraform apply -auto-approve "check.tfplan"
-  dependencies:
-    - test
 
 destroy-job:  
   stage: destroy
@@ -39,8 +37,6 @@ destroy-job:
     - terraform init
     - terraform destroy -auto-approve 
   when: manual  
-  dependencies:
-    - deploy
 
 
 
