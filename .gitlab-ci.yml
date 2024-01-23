@@ -1,5 +1,4 @@
 stages:          
-  - build
   - test
   - deploy
 
@@ -12,17 +11,11 @@ before_script:
   - sudo chmod +x /usr/local/bin/terraform
 
 
-build-job:       
-  stage: build
-  script:
-    - terraform init
-    - terraform validate
-    #- terraform plan
-
-
 test-job:   
   stage: test    
   script:
+    - terraform init
+    - terraform validate
     - terraform plan
 
 
