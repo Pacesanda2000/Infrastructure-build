@@ -1,6 +1,7 @@
 stages:          
   - test
   - deploy
+  - destroy
 
 variables:
   TF_VAR_vsphere_password: "$vsphere_password"
@@ -13,7 +14,6 @@ before_script:
   - sudo unzip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
 
-
 test-job:   
   stage: test    
   script:
@@ -21,12 +21,18 @@ test-job:
     - terraform validate
     - terraform plan
 
-
 deploy-job:   
   stage: deploy    
   script:
     - terraform init
     - terraform apply -auto-approve
+
+destroy-job:  
+  stage: destroy
+  script:
+    - terraform init
+    - terraform destroy -auto-approve
+  when: manual  
 
 
 
