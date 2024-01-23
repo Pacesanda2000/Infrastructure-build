@@ -19,6 +19,8 @@ test-job:
   stage: test    
   script:
     - terraform init 
+    - pwd
+    - ls -la
     - terraform validate
     - terraform plan -out=check.tfplan
   artifacts:
@@ -29,15 +31,16 @@ deploy-job:
   stage: deploy    
   script:
     - terraform init
-    - terraform apply -auto-approve "check.tfplan" -out=terraform.tfstate
-  artifacts:
-    paths:
-      - "terraform.tfstate"
+    - pwd
+    - ls -la
+    - terraform apply -auto-approve "check.tfplan" 
 
 destroy-job:  
   stage: destroy
   script:
     - terraform init
+    - pwd
+    - ls -la
     - terraform destroy -auto-approve "terraform.tfstate"
   when: manual  
 
