@@ -21,23 +21,23 @@ test-job:
     - terraform init 
     - ls -la .
     - terraform validate
-    - terraform plan -out=.terraform.lock.hcl
+    - terraform plan -out=terraform.tfplan
   artifacts:
     paths:
-      - ".terraform.lock.hcl"
+      - "terraform.tfplan"
 
 deploy-job:   
   stage: deploy    
   script:
-    #- terraform init
+    - terraform init
     #- ls -la /usr/local/bin/terraform
-    - terraform apply -auto-approve -state=.terraform.lock.hcl
+    - terraform apply -auto-approve terraform.tfplan
 
 destroy-job:  
   stage: destroy
   script:
     #- terraform init
-    - terraform destroy -auto-approve -state=.terraform.lock.hcl
+    - terraform destroy -auto-approve terraform.tfplan
   when: manual  
 
 
