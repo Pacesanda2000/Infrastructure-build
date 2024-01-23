@@ -36,7 +36,7 @@ deploy-job:
 destroy-job:  
   stage: destroy
   script:
-    #- terraform init
+    - terraform init
     - terraform destroy -auto-approve terraform.tfplan
   when: manual  
 
