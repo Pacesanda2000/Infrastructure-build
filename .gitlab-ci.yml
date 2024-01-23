@@ -28,14 +28,14 @@ test-job:
 deploy-job:   
   stage: deploy    
   script:
-    #- terraform init
+    - terraform init
     #- ls -la /usr/local/bin/terraform
     - terraform apply -auto-approve "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/check.tfplan"
 
 destroy-job:  
   stage: destroy
   script:
-    #- terraform init
+    - terraform init
     - terraform destroy -auto-approve "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/check.tfplan"
   when: manual  
 
