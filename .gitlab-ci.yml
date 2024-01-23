@@ -31,13 +31,13 @@ deploy-job:
   script:
     - terraform init
     #- ls -la /usr/local/bin/terraform
-    - terraform apply -auto-approve terraform.tfplan
+    - terraform apply -auto-approve -state=terraform.tfplan
 
 destroy-job:  
   stage: destroy
   script:
     - terraform init
-    - terraform destroy -auto-approve terraform.tfplan
+    - terraform destroy -auto-approve -state=terraform.tfplan
   when: manual  
 
 
