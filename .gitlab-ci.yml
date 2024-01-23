@@ -20,6 +20,9 @@ test-job:
     - terraform init
     - terraform validate
     - terraform plan -out=terraform.tfplan
+  artifacts:
+    paths:
+      - terraform.tfplan
 
 deploy-job:   
   stage: deploy    
