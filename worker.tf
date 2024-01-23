@@ -2,7 +2,7 @@
 
 resource "vsphere_virtual_machine" "worker" {
   count            = "1"
-  name             = "workerik${count.index + 1}"
+  name             = "worker${count.index + 1}"
   num_cpus         = 4
   memory           = 4096
   folder           = "3.rocnik/3.rocnik_projekty/dmajoros"
@@ -23,7 +23,7 @@ resource "vsphere_virtual_machine" "worker" {
 
   disk {
     label = "worker.vmdk"
-    size  = "25"
+    size  = "10"
     thin_provisioned = false
   }
 
