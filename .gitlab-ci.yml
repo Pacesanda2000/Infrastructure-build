@@ -31,7 +31,7 @@ deploy-job:
   script:
     #- terraform init
     - ls -la /usr/local/bin/terraform
-    - terraform apply -auto-approve -state=terraform.tplan
+    - terraform apply -auto-approve -state=terraform.tfplan
 
 destroy-job:  
   stage: destroy
