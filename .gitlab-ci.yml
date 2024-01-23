@@ -9,35 +9,34 @@ variables:
 before_script:
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
-  - ls -la /usr/local/bin/
   - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip
   - sudo unzip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
-  - ls -la /usr/local/bin/terraform
+  - cd /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/
+  - pwd
 
 test-job:   
   stage: test    
   script:
     - terraform init 
-    - ls -la .
     - terraform validate
     - terraform plan -out=terraform.tfplan
   artifacts:
     paths:
-      - "terraform.tfplan"
+      - "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.tfplan"
 
 deploy-job:   
   stage: deploy    
   script:
-    - terraform init
+    #- terraform init
     #- ls -la /usr/local/bin/terraform
-    - terraform apply -auto-approve "terraform.tfplan"
+    - terraform apply -auto-approve "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.tfplan"
 
 destroy-job:  
   stage: destroy
   script:
-    - terraform init
-    - terraform destroy -auto-approve "terraform.tfplan"
+    #- terraform init
+    - terraform destroy -auto-approve "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.tfplan"
   when: manual  
 
 
