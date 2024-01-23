@@ -2,6 +2,9 @@ stages:
   - test
   - deploy
 
+variables:
+  TF_VAR_vsphere_password: "$vsphere_password"
+
 before_script:
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
