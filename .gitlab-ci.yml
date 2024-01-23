@@ -22,7 +22,7 @@ test-job:
     - terraform plan -out=terraform.tfplan
   artifacts:
     paths:
-      - terraform.tfplan
+      - "terraform.tfplan"
 
 deploy-job:   
   stage: deploy    
