@@ -21,7 +21,7 @@ test-job:
     - terraform init 
     - ls -la .
     - terraform validate
-    - terraform plan -out=terraform.tfstate
+    - terraform plan -out=terraform.tfplan
   artifacts:
     paths:
       - "terraform.tfstate"
@@ -29,9 +29,9 @@ test-job:
 deploy-job:   
   stage: deploy    
   script:
-    - terraform init
+    #- terraform init
     - ls -la /usr/local/bin/terraform
-    - terraform apply -auto-approve -state=terraform.tfstate
+    - terraform apply -auto-approve -state=terraform.tplan
 
 destroy-job:  
   stage: destroy
