@@ -4,12 +4,6 @@ variable "vsphere_user" {
   description = "username"
 }
 
-variable "vsphere_password" {
-  type        = string
-  default     = "Pacesanda2000."
-  description = "password"
-}
-
 variable "vsphere_server" {
   type        = string
   default     = "vlab.dual.edu"
