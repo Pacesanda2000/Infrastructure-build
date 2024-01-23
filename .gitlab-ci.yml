@@ -19,19 +19,19 @@ test-job:
   script:
     - terraform init
     - terraform validate
-    - terraform plan
+    - terraform plan -out=terraform.tfplan
 
 deploy-job:   
   stage: deploy    
   script:
-    - terraform init
-    - terraform apply -auto-approve
+    #- terraform init
+    - terraform apply -auto-approve terraform.tfplan
 
 destroy-job:  
   stage: destroy
   script:
-    - terraform init
-    - terraform destroy -auto-approve
+    #- terraform init
+    - terraform destroy -auto-approve terraform.tfplan
   when: manual  
 
 
