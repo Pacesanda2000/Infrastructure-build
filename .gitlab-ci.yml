@@ -29,7 +29,7 @@ test-job:
 deploy-job:   
   stage: deploy    
   script:
-    #- terraform init
+    - terraform init
     - ls -la /usr/local/bin/terraform
     - terraform apply -auto-approve -state=terraform.tfstate
 
