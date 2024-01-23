@@ -29,13 +29,16 @@ deploy-job:
   stage: deploy    
   script:
     - terraform init
-    - terraform apply -auto-approve "check.tfplan"
+    - terraform apply -auto-approve "check.tfplan" -out=terraform.tfstate
+  artifacts:
+    paths:
+      - "terraform.tfstate"
 
 destroy-job:  
   stage: destroy
   script:
     - terraform init
-    - terraform destroy -auto-approve 
+    - terraform destroy -auto-approve "terraform.tfstate"
   when: manual  
 
 
