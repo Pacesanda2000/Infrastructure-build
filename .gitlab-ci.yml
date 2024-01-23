@@ -20,23 +20,23 @@ test-job:
   script:
     - terraform init 
     - terraform validate
-    - terraform plan -out=terraform.tfplan
+    - terraform plan -out=check.tfplan
   artifacts:
     paths:
-      - "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.tfplan"
+      - "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/check.tfplan"
 
 deploy-job:   
   stage: deploy    
   script:
     #- terraform init
     #- ls -la /usr/local/bin/terraform
-    - terraform apply -auto-approve "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.tfplan"
+    - terraform apply -auto-approve "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/check.tfplan"
 
 destroy-job:  
   stage: destroy
   script:
     #- terraform init
-    - terraform destroy -auto-approve "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.tfplan"
+    - terraform destroy -auto-approve "/home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/check.tfplan"
   when: manual  
 
 
