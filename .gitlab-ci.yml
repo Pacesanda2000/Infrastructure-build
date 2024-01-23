@@ -20,22 +20,22 @@ test-job:
     - terraform init 
     - ls -la .
     - terraform validate
-    - terraform plan #-out=new_terraform.tfplan
-#  artifacts:
- #   paths:
- #     - "new_terraform.tfplan"
+    - terraform plan -out=terraform.tfstate
+  artifacts:
+    paths:
+      - "terraform.tfstate"
 
 deploy-job:   
   stage: deploy    
   script:
-    - terraform init
-    - terraform apply -auto-approve #new_terraform.tfplan
+    #- terraform init
+    - terraform apply -auto-approve terraform.tfstate
 
 destroy-job:  
   stage: destroy
   script:
-    - terraform init
-    - terraform destroy -auto-approve #new_terraform.tfplan
+    #- terraform init
+    - terraform destroy -auto-approve terraform.tfstate
   when: manual  
 
 
