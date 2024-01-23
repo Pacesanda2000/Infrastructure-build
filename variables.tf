@@ -12,7 +12,6 @@ variable "vsphere_server" {
 
 variable "vsphere_password" {
   type        = string
-  #default     = "Pacesanda2000."
   description = "password"
 }
 
