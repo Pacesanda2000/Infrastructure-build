@@ -13,7 +13,7 @@ before_script:
   - ls -la ${working_directory}
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
-  - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o ${working_directory}/terraform.zip
+  - curl -fsSL https://releases.hashicorp.com/terraform/2.0.0-alpha/terraform_2.0.0-alpha_linux_amd64.zip -o ${working_directory}/terraform.zip
   - sudo unzip -o ${working_directory}/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
   - terraform init
