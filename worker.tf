@@ -37,7 +37,7 @@ resource "vsphere_virtual_machine" "worker" {
         domain    = "vlab.dual.edu"
       }
       network_interface {
-        ipv4_address  = ["10.207.0.401", "10.207.0.402"]
+        ipv4_address  = "10.207.0.401", "10.207.0.402"
         #ipv4_address  = "10.203.0.${201 + count.index}"
         ipv4_netmask  = 24
         #dns_server_list = ["172.29.0.101", "172.29.0.103"]
