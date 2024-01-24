@@ -2,6 +2,7 @@ stages:
   - test
   - deploy
   - destroy
+  - get-ips
 
 
 variables:
@@ -43,6 +44,14 @@ deploy-job:
       - "master_ip_addresses.json"
       - "worker_ip_addresses.json"
     
+
+get-ips-job:
+  stage: get-ips
+  script:
+    - bash get_ips.sh  # Spustíte váš skript pro získání IP adres strojů z DNS
+  dependencies:
+    - deploy-job  # Závislost na deploy-job, takže bude spuštěno až po dokončení nasazení
+
 
 destroy-job:  
   stage: destroy
