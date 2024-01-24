@@ -45,7 +45,7 @@ destroy-job:
   script:
     - terraform init
     - pwd
-    - ls -la
+    - ls -ltra
     - terraform destroy -auto-approve 
   when: manual  
 
