@@ -37,7 +37,7 @@ deploy-job:
     - terraform apply -auto-approve "check.tfplan" 
   artifacts:
     paths:
-      - "terraform tfstate"
+      - "terraform.tfstate"
     
 
 destroy-job:  
