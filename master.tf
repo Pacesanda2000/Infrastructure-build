@@ -66,6 +66,7 @@ resource "vsphere_virtual_machine" "master" {
   scsi_type        = data.vsphere_virtual_machine.template.scsi_type
   wait_for_guest_net_timeout = -5
   wait_for_guest_ip_timeout  = 0
+  wait_for_guest_net_routable = false
 
 
   network_interface {
