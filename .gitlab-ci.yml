@@ -13,6 +13,7 @@ before_script:
   - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip
   - sudo unzip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
+  - terraform init
   #- pwd
 
 test-job:   
@@ -30,7 +31,7 @@ test-job:
 deploy-job:   
   stage: deploy    
   script:
-    - terraform init
+    #- terraform init
     #- pwd
     #- ls -la
     #- cat check.tfplan
@@ -43,9 +44,9 @@ deploy-job:
 destroy-job:  
   stage: destroy
   script:
-    - terraform init
-    - pwd
-    - ls -ltra
+    #- terraform init
+    #- pwd
+    #- ls -ltra
     - terraform destroy -auto-approve 
   when: manual  
 
