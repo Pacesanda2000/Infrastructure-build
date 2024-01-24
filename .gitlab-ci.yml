@@ -35,6 +35,10 @@ deploy-job:
     - ls -la
     - cat check.tfplan
     - terraform apply -auto-approve "check.tfplan" 
+  artifacts:
+    paths:
+      - "terraform tfstate"
+    
 
 destroy-job:  
   stage: destroy
