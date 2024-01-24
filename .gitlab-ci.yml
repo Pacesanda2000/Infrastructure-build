@@ -3,12 +3,13 @@ stages:
   - deploy
   - destroy
 
+
 variables:
   TF_VAR_vsphere_password: "$vsphere_password"
   TF_VAR_working_directory: "$working_directory"
 
+
 before_script:
-  #- cd /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/
   - ls -la ${working_directory}
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
@@ -16,27 +17,21 @@ before_script:
   - sudo unzip -o ${working_directory}/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
   - terraform init
-  #- ls -la ${working_directory}
+
 
 test-job:   
   stage: test    
   script:
-    - terraform init 
-    #- pwd
-    #- ls -la
     - terraform validate
     - terraform plan -out=check.tfplan
   artifacts:
     paths:
       - "check.tfplan"
 
+
 deploy-job:   
   stage: deploy    
   script:
-    #- terraform init
-    #- pwd
-    #- ls -la
-    #- cat check.tfplan
     - terraform apply -auto-approve "check.tfplan" 
   artifacts:
     paths:
@@ -46,9 +41,6 @@ deploy-job:
 destroy-job:  
   stage: destroy
   script:
-    #- terraform init
-    #- pwd
-    #- ls -ltra
     - terraform destroy -auto-approve 
   when: manual  
 
