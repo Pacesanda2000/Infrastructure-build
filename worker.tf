@@ -20,9 +20,6 @@ resource "vsphere_virtual_machine" "worker" {
   network_interface {
     network_id = data.vsphere_network.network.id
     adapter_type  = "vmxnet3"
-    ipv4_address  = "10.207.0.${401 + count.index}"
-    ipv4_netmask  = 24
-
   }
 
   disk {
@@ -40,8 +37,8 @@ resource "vsphere_virtual_machine" "worker" {
         domain    = "vlab.dual.edu"
       }
       network_interface {
-        #ipv4_address  = "10.207.0.${401 + count.index}"
-        #ipv4_netmask  = 24
+        ipv4_address  = "10.207.0.${401 + count.index}"
+        ipv4_netmask  = 24
         #dns_server_list = ["172.29.0.101", "172.29.0.103"]
       }
 
