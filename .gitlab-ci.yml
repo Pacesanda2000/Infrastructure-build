@@ -40,8 +40,8 @@ deploy-job:
   artifacts:
     paths:
       - "terraform.tfstate"
-      #- "master_ip_addresses.json"
-      #- "worker_ip_addresses.json"
+      - "master_ip_addresses.json"
+      - "worker_ip_addresses.json"
     
 
 destroy-job:  
