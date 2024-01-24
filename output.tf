@@ -1,11 +1,11 @@
 output "master_ip_addresses" {
   value = flatten([
-    for vm in vsphere_virtual_machine.master : vsphere_virtual_machine.master.vm.name
+    for vm in vsphere_virtual_machine.master : vsphere_virtual_machine.master.name
   ])
 }
 
 output "worker_ip_addresses" {
   value = flatten([
-    for vm in vsphere_virtual_machine.worker : vsphere_virtual_machine.worker.vm.name
+    for vm in vsphere_virtual_machine.worker : vsphere_virtual_machine.worker.name
   ])
 }
