@@ -7,6 +7,7 @@ variables:
   TF_VAR_vsphere_password: "$vsphere_password"
 
 before_script:
+  - cd /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
   - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip
@@ -32,6 +33,7 @@ deploy-job:
     - terraform init
     - pwd
     - ls -la
+    - cat check.tfplan
     - terraform apply -auto-approve "check.tfplan" 
 
 destroy-job:  
