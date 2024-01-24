@@ -34,9 +34,11 @@ deploy-job:
   stage: deploy    
   script:
     - terraform apply -auto-approve "check.tfplan" 
+    - terraform output -json ip_addresses > "${TF_VAR_working_directory}/ip_addresses.json"
   artifacts:
     paths:
       - "terraform.tfstate"
+      - "ip_addresses.json"
     
 
 destroy-job:  
