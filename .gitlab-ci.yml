@@ -12,10 +12,9 @@ variables:
 before_script:
   - ls -la ${working_directory}
   - sudo yum update -y  
-  - sudo yum install -y curl unzip 
-  - curl -fsSL https://releases.hashicorp.com/terraform/2.0.0-alpha/terraform_2.0.0-alpha_linux_amd64.zip -o ${working_directory}/terraform.zip
-  - sudo unzip -o ${working_directory}/terraform.zip -d /usr/local/bin/
-  - sudo chmod +x /usr/local/bin/terraform
+  - sudo yum install -y yum-utils
+  - sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/RHEL/hashicorp.repo
+  - sudo yum -y install terraform
   - terraform init
 
 
