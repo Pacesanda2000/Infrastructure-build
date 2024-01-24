@@ -5,16 +5,17 @@ stages:
 
 variables:
   TF_VAR_vsphere_password: "$vsphere_password"
+  TF_VAR_vsphere_directory: "$vsphere_directory"
 
 before_script:
   #- cd /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
-  - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip
-  - sudo unzip -o /home/gitlab-runner/builds/zvN3A5z1/0/dualedu/2022-2023/sis/dmajoros/projekt/terraform.zip -d /usr/local/bin/
+  - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o ${vsphere_directory}/terraform.zip
+  - sudo unzip -o ${vsphere_directory}/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
   - terraform init
-  #- pwd
+  - ls -la ${vsphere_directory}
 
 test-job:   
   stage: test    
