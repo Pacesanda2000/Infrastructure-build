@@ -4,7 +4,8 @@ terraform {
       source = "hashicorp/vsphere"
     }
   }
-  required_version = ">= 0.13"
+  #required_version = ">= 0.13"
+   required_version = "2.6.1"
   backend "local" {
     path = "terraform.tfstate"
   }
