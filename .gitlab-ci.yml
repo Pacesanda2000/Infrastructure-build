@@ -7,7 +7,10 @@ stages:
 variables:
   TF_VAR_vsphere_password: "$vsphere_password"
   TF_VAR_working_directory: "$working_directory"
-
+  PROJECT_ID: "<gitlab-project-id>"
+  TF_USERNAME: "<gitlab-username>"
+  TF_PASSWORD: "<gitlab-personal-access-token>"
+  TF_ADDRESS: "https://gitlab.com/api/v4/projects/${PROJECT_ID}/terraform/state/old-state-name"
 
 before_script:
   - ls -la ${working_directory}
@@ -16,7 +19,16 @@ before_script:
   - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o ${working_directory}/terraform.zip
   - sudo unzip -o ${working_directory}/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
-  - terraform init
+  - terraform init --reconfigure
+  - backend-config=address=${TF_ADDRESS} 
+  - backend-config=lock_address=${TF_ADDRESS}/lock 
+  - backend-config=unlock_address=${TF_ADDRESS}/lock 
+  - backend-config=username=${TF_USERNAME} 
+  - backend-config=password=${TF_PASSWORD} 
+  - backend-config=lock_method=POST 
+  - backend-config=unlock_method=DELETE 
+  - backend-config=retry_wait_min=5
+
   
 
 test-job:   
