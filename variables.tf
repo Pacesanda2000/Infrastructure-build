@@ -15,12 +15,6 @@ variable "vsphere_password" {
   description = "password"
 }
 
-variable "vm_name" {
-  description = "VM Names"
-  default     = "serverik-"
-  type        = string
-}
-
 variable "vm_count_worker" {
   description = "Number of Worker VMs"
   default     = 2
@@ -29,6 +23,6 @@ variable "vm_count_worker" {
 
 variable "vm_count_master" {
   description = "Number of Master VMs"
-  default     = 2
+  default     = 1
   type        = string
 }
