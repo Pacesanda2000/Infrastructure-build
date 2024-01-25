@@ -2,7 +2,7 @@
 
 resource "vsphere_virtual_machine" "worker" {
   count            = "2"
-  name             = "vm_count_worker${count.index + 1}"
+  name             = var.vm_count_worker${count.index + 1}
   num_cpus         = 4
   memory           = 4096
   folder           = "3.rocnik/3.rocnik_projekty/dmajoros"
