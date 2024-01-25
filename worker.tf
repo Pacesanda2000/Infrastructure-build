@@ -2,7 +2,7 @@
 
 resource "vsphere_virtual_machine" "worker" {
   count            = "2"
-  name             = "worker${count.index + 1}"
+  name             = "vm_count_worker${count.index + 1}"
   num_cpus         = 4
   memory           = 4096
   folder           = "3.rocnik/3.rocnik_projekty/dmajoros"
@@ -31,7 +31,7 @@ resource "vsphere_virtual_machine" "worker" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
-
+    timeout = 0
     customize {
       timeout = 0
       linux_options {
