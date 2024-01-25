@@ -64,7 +64,7 @@ resource "vsphere_virtual_machine" "master" {
   resource_pool_id = data.vsphere_resource_pool.pool.id
   guest_id         = data.vsphere_virtual_machine.template.guest_id
   scsi_type        = data.vsphere_virtual_machine.template.scsi_type
-  boot_delay       = true
+  boot_delay       = 0
   wait_for_guest_net_timeout = 0
   wait_for_guest_ip_timeout  = 0
   #wait_for_guest_net_routable = false
