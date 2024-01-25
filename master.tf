@@ -66,8 +66,8 @@ resource "vsphere_virtual_machine" "master" {
   scsi_type        = data.vsphere_virtual_machine.template.scsi_type
   wait_for_guest_net_timeout = 0
   wait_for_guest_ip_timeout  = 0
-  wait_for_guest_net_routable = false
-  ignored_guest_ips = ["127.0.0.1"]
+  #wait_for_guest_net_routable = false
+  #ignored_guest_ips = ["127.0.0.1"]
 
 
   network_interface {
@@ -85,9 +85,11 @@ resource "vsphere_virtual_machine" "master" {
     template_uuid = data.vsphere_virtual_machine.template.id
 
     customize {
+      timeout = 0
       linux_options {
         host_name = "master${count.index + 1}"
         domain    = "vlab.dual.edu"
+        
       }
       network_interface {
         #ipv4_address  = "10.207.0.300"
