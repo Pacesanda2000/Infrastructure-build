@@ -18,7 +18,7 @@ before_script:
   - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o ${working_directory}/terraform.zip
   - sudo unzip -o ${working_directory}/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
-  - terraform init -reconfigure
+  - terraform init 
   - backend-config=address=${TF_ADDRESS} 
   - backend-config=lock_address=${TF_ADDRESS}/lock 
   - backend-config=unlock_address=${TF_ADDRESS}/lock 
