@@ -31,7 +31,7 @@ resource "vsphere_virtual_machine" "worker" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
-    timeout = 10
+    
     customize {
       timeout = 0
       linux_options {
