@@ -22,7 +22,7 @@ before_script:
 
 cache:
   paths:
-    - "$working_directory/terraform.tfstate"
+    - "$working_directory/.terraform"
   
 
 test-job:   
