@@ -6,6 +6,6 @@ output "master_ip_addresses" {
 
 output "worker_ip_addresses" {
   value = flatten([
-    for vm in vsphere_virtual_machine.worker : vm.name
+    for vm in vsphere_virtual_machine.worker : vm.clone.customize.network_interface
   ])
 }
