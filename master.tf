@@ -54,7 +54,7 @@ data "vsphere_virtual_machine" "template" {
 #### VM CREATION ####
 
 resource "vsphere_virtual_machine" "master" {
-  count            = "1"
+  count            = "2"
   name             = "master${count.index + 1}"
   num_cpus         = 4
   memory           = 4096
@@ -64,6 +64,7 @@ resource "vsphere_virtual_machine" "master" {
   resource_pool_id = data.vsphere_resource_pool.pool.id
   guest_id         = data.vsphere_virtual_machine.template.guest_id
   scsi_type        = data.vsphere_virtual_machine.template.scsi_type
+  boot_delay
   wait_for_guest_net_timeout = 0
   wait_for_guest_ip_timeout  = 0
   #wait_for_guest_net_routable = false
@@ -83,7 +84,7 @@ resource "vsphere_virtual_machine" "master" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
-
+  
     customize {
       timeout = 0
       linux_options {
