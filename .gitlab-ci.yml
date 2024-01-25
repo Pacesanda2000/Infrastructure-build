@@ -9,7 +9,7 @@ variables:
   TF_VAR_working_directory: "$working_directory"
   TF_USERNAME: "DAVID.MAJOROS@T-SYSTEMS.COM"
   TF_PASSWORD: "glpat-ms_qoJFJ5ERR9QKu46ST"
-  TF_ADDRESS: "https://gitlab.dual.edu/api/v4/projects/212/terraform/state/default"
+  TF_ADDRESS: "https://gitlab.dual.edu/dualedu/2022-2023/sis/dmajoros/projekt/-/terraform"
 
 before_script:
   - cd ${working_directory}
