@@ -21,8 +21,14 @@ variable "vm_name" {
   type        = string
 }
 
-variable "vm_count" {
-  description = "Number of Virtual Machines"
-  default     = 3
+variable "vm_count_worker" {
+  description = "Number of Worker VMs"
+  default     = 2
+  type        = string
+}
+
+variable "vm_count_master" {
+  description = "Number of Master VMs"
+  default     = 2
   type        = string
 }
