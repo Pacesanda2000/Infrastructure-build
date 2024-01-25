@@ -11,19 +11,20 @@ variables:
 
 before_script:
   - cd ${working_directory}
+  - ls -la ${working_directory}
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
   - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o ${working_directory}/terraform.zip
   - sudo unzip -o ${working_directory}/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
-  - terraform init 
+  - terraform --version
+  - terraform init -backend-config=terraform.tfstate
 
   
 
 test-job:   
   stage: test    
   script:
-    - terraform --version
     - terraform validate
     - terraform plan -out=check.tfplan 
   artifacts:
@@ -37,7 +38,6 @@ deploy-job:
     - terraform apply -auto-approve 
     - terraform output -json master_ip_addresses > "${working_directory}/master_ip_addresses.json"
     - terraform output -json worker_ip_addresses > "${working_directory}/worker_ip_addresses.json"
-    - ls -la ${working_directory}
   artifacts:
     paths:
       - "terraform.tfstate"
