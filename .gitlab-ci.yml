@@ -20,6 +20,9 @@ before_script:
   - terraform --version
   - terraform init -backend-config="terraform.tfstate"
 
+cache:
+  paths:
+    - "$working_directory/terraform.tfstate"
   
 
 test-job:   
