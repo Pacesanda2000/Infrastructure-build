@@ -54,7 +54,7 @@ data "vsphere_virtual_machine" "template" {
 #### VM CREATION ####
 
 resource "vsphere_virtual_machine" "master" {
-  count            = "1"
+  count            = "2"
   name             = "master${count.index + 1}"
   num_cpus         = 4
   memory           = 4096
