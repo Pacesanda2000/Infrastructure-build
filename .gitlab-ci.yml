@@ -7,10 +7,9 @@ stages:
 variables:
   TF_VAR_vsphere_password: "$vsphere_password"
   TF_VAR_working_directory: "$working_directory"
-  PROJECT_ID: "212"
   TF_USERNAME: "DAVID.MAJOROS@T-SYSTEMS.COM"
   TF_PASSWORD: "glpat-ms_qoJFJ5ERR9QKu46ST"
-  TF_ADDRESS: "https://gitlab.com/api/v4/projects/${PROJECT_ID}/terraform/state/old-state-name"
+  TF_ADDRESS: "https://gitlab.dual.edu/api/v4/projects/212/terraform/state/tf_state"
 
 before_script:
   - cd ${working_directory}
