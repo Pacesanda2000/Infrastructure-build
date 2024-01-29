@@ -89,7 +89,7 @@ resource "vsphere_virtual_machine" "master" {
   disk {
     label = "master.vmdk"
     size  = "20"
-    thin_provisioned = false
+    thin_provisioned = true
   }
 
   clone {

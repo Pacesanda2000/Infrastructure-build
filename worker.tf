@@ -26,7 +26,7 @@ resource "vsphere_virtual_machine" "worker" {
   disk {
     label = "worker.vmdk"
     size  = "20"
-    thin_provisioned = false
+    thin_provisioned = true
   }
 
   clone {
