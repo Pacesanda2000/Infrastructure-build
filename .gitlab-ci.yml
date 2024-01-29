@@ -21,7 +21,7 @@ before_script:
   - export AWS_SECRET_ACCESS_KEY="vPp5A9osXYaHPBY5f8c/dsy7kcGHxPhcMS99fBKP"
   - export AWS_REGION="eu-west-1"
   - terraform --version
-  - terraform init 
+  - terraform init -migrate-state
 
 cache:
   paths:
