@@ -8,6 +8,13 @@ terraform {
     }
   }
   required_version = ">= 0.13"
+  backend "s3" {
+    bucket         = "tf-backend-gitlab"
+    key            = "terraform.tfstate"
+    region         = "eu-west-1"
+    encrypt        = true
+    dynamodb_table = "tf-backend-table"
+  }
 }
 
 
@@ -25,14 +32,6 @@ provider "aws" {
   region     = "eu-west-1"
   access_key = "AKIATPG5KZCGRC2AXBR5"
   secret_key = "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"
-}
-
-backend "s3" {
-    bucket         = "tf-backend-gitlab"
-    key            = "terraform.tfstate"
-    region         = "eu-west-1"
-    encrypt        = true
-    dynamodb_table = "tf-backend-table"
 }
 
 
