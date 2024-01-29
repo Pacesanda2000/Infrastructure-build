@@ -17,7 +17,7 @@ variable "vsphere_password" {
 
 variable "vm_count_worker" {
   description = "Number of Worker VMs"
-  default     = 1
+  default     = 2
   type        = string
 }
 
