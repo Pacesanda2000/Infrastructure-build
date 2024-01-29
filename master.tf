@@ -3,11 +3,11 @@ terraform {
     vsphere = {
       source = "hashicorp/vsphere"
     }
+    aws = {
+      source = "hashicorp/aws"
+    }
   }
   required_version = ">= 0.13"
-  backend "local" {
-    path = "terraform.tfstate"
-  }
 }
 
 
@@ -21,6 +21,11 @@ provider "vsphere" {
   allow_unverified_ssl = true
 }
 
+provider "aws" {
+  region     = "eu-west-1"
+  access_key = "AKIATPG5KZCGRC2AXBR5"
+  secret_key = "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"
+}
 
 
 #### DATA INFORMATION FROM VCENTER ####
