@@ -17,8 +17,11 @@ before_script:
   - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o ${working_directory}/terraform.zip
   - sudo unzip -o ${working_directory}/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
+  - export AWS_ACCESS_KEY_ID="AKIATPG5KZCGRC2AXBR5"
+  - export AWS_SECRET_ACCESS_KEY="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"
+  - export AWS_REGION="eu-west-1"
   - terraform --version
-  - terraform init -migrate-state
+  - terraform init 
 
 cache:
   paths:

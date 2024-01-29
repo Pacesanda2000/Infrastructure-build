@@ -30,9 +30,6 @@ provider "vsphere" {
 }
 
 provider "aws" {
-  region     = var.aws_region 
-  access_key = var.aws_akid 
-  secret_key = var.aws_sak 
 }
 
 
