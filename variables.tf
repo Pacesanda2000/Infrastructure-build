@@ -6,7 +6,7 @@ variable "vsphere_user" {
 
 variable "vsphere_server" {
   type        = string
-  default     = "vlab.dual.edu"
+  default     = "172.27.16.210"
   description = "server"
 }
 

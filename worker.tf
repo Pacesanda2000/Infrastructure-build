@@ -1,4 +1,4 @@
-#### VM CREATION ####
+#### Workers CREATION ####
 
 resource "vsphere_virtual_machine" "worker" {
   count            = var.vm_count_worker

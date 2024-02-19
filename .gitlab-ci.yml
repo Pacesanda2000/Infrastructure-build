@@ -42,14 +42,9 @@ deploy-job:
   stage: deploy    
   script:
     - terraform apply -auto-approve 
-    - terraform output -json master_ip_addresses > "${working_directory}/master_ip_addresses.json"
-    - terraform output -json worker_ip_addresses > "${working_directory}/worker_ip_addresses.json"
   artifacts:
     paths:
       - "terraform.tfstate"
-      - "master_ip_addresses.json"
-      - "worker_ip_addresses.json"
-    
 
 
 destroy-job:  
