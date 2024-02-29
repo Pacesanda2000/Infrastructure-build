@@ -19,7 +19,6 @@ terraform {
 }
 
 
-
 #### PROVIDER AUTHENTIFICATION ####
 
 provider "vsphere" {
@@ -60,8 +59,7 @@ data "vsphere_virtual_machine" "template" {
 }
 
 
-
-#### VM CREATION ####
+#### master CREATION ####
 
 resource "vsphere_virtual_machine" "master" {
   count            = var.vm_count_master
@@ -77,9 +75,6 @@ resource "vsphere_virtual_machine" "master" {
   boot_delay       = 0
   wait_for_guest_net_timeout = 0
   wait_for_guest_ip_timeout  = 0
-  #wait_for_guest_net_routable = false
-  #ignored_guest_ips = ["127.0.0.1"]
-
 
   network_interface {
      network_id = data.vsphere_network.network.id
@@ -94,21 +89,13 @@ resource "vsphere_virtual_machine" "master" {
 
   clone {
     template_uuid = data.vsphere_virtual_machine.template.id
-  
     customize {
       timeout = 0
       linux_options {
         host_name = "master${count.index + 1}"
-        domain    = "vlab.dual.edu"
-        
       }
       network_interface {
-        #ipv4_address  = "10.207.0.300"
-        #ipv4_address  = "10.207.0.${401 + count.index}"
-        #ipv4_netmask  = 24
-        #dns_server_list = ["172.29.0.101", "172.29.0.103"]
       }
-
       ipv4_gateway = "172.27.16.254"
     }
   }

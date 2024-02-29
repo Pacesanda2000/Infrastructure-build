@@ -3,30 +3,22 @@ stages:
   - deploy
   - destroy
 
-
 variables:
   TF_VAR_vsphere_password: "$vsphere_password"
-  TF_VAR_working_directory: "$working_directory"
-
 
 before_script:
-  - cd ${working_directory}
-  - ls -la ${working_directory}
+  - cd ${TF_VAR_working_directory}
+  - ls -la ${TF_VAR_working_directory}
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
-  - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o ${working_directory}/terraform.zip
-  - sudo unzip -o ${working_directory}/terraform.zip -d /usr/local/bin/
+  - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o ${TF_VAR_working_directory}/terraform.zip
+  - sudo unzip -o ${TF_VAR_working_directory}/terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
-  - export AWS_ACCESS_KEY_ID="AKIATPG5KZCGRC2AXBR5"
-  - export AWS_SECRET_ACCESS_KEY="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"
-  - export AWS_REGION="eu-west-1"
+  - export AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
+  - export AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
+  - export AWS_REGION=${AWS_REGION}
   - terraform --version
   - terraform init -migrate-state
-
-cache:
-  paths:
-    - "$working_directory/.terraform"
-  
 
 test-job:   
   stage: test    
@@ -36,7 +28,7 @@ test-job:
   artifacts:
     paths:
       - "check.tfplan"
-
+  when: manual
 
 deploy-job:   
   stage: deploy    
@@ -45,7 +37,7 @@ deploy-job:
   artifacts:
     paths:
       - "terraform.tfstate"
-
+  when: manual
 
 destroy-job:  
   stage: destroy
