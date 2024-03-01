@@ -1,3 +1,5 @@
+#### PROVIDER AUTHENTIFICATION ####
+
 terraform {
   required_providers {
     vsphere = {
@@ -17,8 +19,6 @@ terraform {
     dynamodb_table = "tf-backend-table"
   }
 }
-
-#### PROVIDER AUTHENTIFICATION ####
 
 provider "vsphere" {
   user           = var.vsphere_user

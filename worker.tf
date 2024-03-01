@@ -1,12 +1,11 @@
-#### workers CREATION ####
+#### WORKER'S CREATION ####
 
 resource "vsphere_virtual_machine" "worker" {
   count            = var.vm_count_worker
   name             = "worker${count.index + 1}"
-  num_cpus         = 4
-  memory           = 4096
-  folder           = "3.rocnik/3.rocnik_projekty/dmajoros"
-  annotation       = "Automatically generated via Terraform by dmajoros"
+  num_cpus         = var.vm_cpu_worker 
+  memory           = var.vm_memory_worker #
+  folder           = var.vm_folder 
   datastore_id     = data.vsphere_datastore.datastore.id
   resource_pool_id = data.vsphere_resource_pool.pool.id
   guest_id         = data.vsphere_virtual_machine.template.guest_id
@@ -22,7 +21,7 @@ resource "vsphere_virtual_machine" "worker" {
 
   disk {
     label = "worker.vmdk"
-    size  = "20"
+    size  = var.vm_disk_size_worker 
     thin_provisioned = true
   }
 

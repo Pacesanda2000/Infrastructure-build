@@ -1,12 +1,11 @@
-#### master CREATION ####
+#### MASTER'S CREATION ####
 
 resource "vsphere_virtual_machine" "master" {
   count            = var.vm_count_master
   name             = "master${count.index + 1}"
-  num_cpus         = 4
-  memory           = 4096
-  folder           = "3.rocnik/3.rocnik_projekty/dmajoros"
-  annotation       = "Automatically generated via Terraform by dmajoros"
+  num_cpus         = var.vm_cpu_master
+  memory           = var.vm_memory_master
+  folder           = var.vm_folder
   datastore_id     = data.vsphere_datastore.datastore.id
   resource_pool_id = data.vsphere_resource_pool.pool.id
   guest_id         = data.vsphere_virtual_machine.template.guest_id
@@ -16,13 +15,13 @@ resource "vsphere_virtual_machine" "master" {
   wait_for_guest_ip_timeout  = 0
 
   network_interface {
-     network_id = data.vsphere_network.network.id
-     adapter_type  = "vmxnet3"
+    network_id = data.vsphere_network.network.id
+    adapter_type  = "vmxnet3"
   }
 
   disk {
     label = "master.vmdk"
-    size  = "100"
+    size  = var.vm_disk_size_master
     thin_provisioned = true
   }
 
