@@ -5,17 +5,17 @@ stages:
 
 variables:
   TF_VAR_vsphere_password: "$vsphere_password"
-  TF_VAR_working_directory: "$working_directory"
+  #TF_VAR_working_directory: "$working_directory"
 
 before_script:
-  - echo ${working_directory}
-  - echo $AWS_ACCESS_KEY_ID
-  - cd ${working_directory}
-  - ls -la ${working_directory}
+  #- echo ${working_directory}
+  #- echo $AWS_ACCESS_KEY_ID
+  #- cd ${working_directory}
+  #- ls -la ${working_directory}
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
-  - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o $WORKING_DIRECTORY/terraform.zip
-  - sudo unzip -o $WORKING_DIRECTORY/terraform.zip -d /usr/local/bin/
+  - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o ./terraform.zip
+  - sudo unzip -o ./terraform.zip -d /usr/local/bin/
   - sudo chmod +x /usr/local/bin/terraform
   - export AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID
   - export AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY
