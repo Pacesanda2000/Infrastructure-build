@@ -32,6 +32,7 @@ resource "vsphere_virtual_machine" "worker" {
       timeout = 0
       linux_options {
         host_name = "worker${count.index + 1}"
+        domain    = "vlab.dual.edu"
       }
       network_interface {
       }

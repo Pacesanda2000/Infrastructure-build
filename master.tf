@@ -32,6 +32,7 @@ resource "vsphere_virtual_machine" "master" {
       timeout = 0
       linux_options {
         host_name = "master${count.index + 1}"
+        domain    = "vlab.dual.edu"
       }
       network_interface {
       }
