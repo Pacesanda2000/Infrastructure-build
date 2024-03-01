@@ -1,64 +1,3 @@
-terraform {
-  required_providers {
-    vsphere = {
-      source = "hashicorp/vsphere"
-    }
-    aws = {
-      source = "hashicorp/aws"
-      version = "~> 2.0"
-    }
-  }
-  required_version = ">= 0.13"
-  backend "s3" {
-    bucket         = "tf-backend-gitlab"
-    key            = "terraform.tfstate"
-    region         = "eu-west-1"
-    encrypt        = true
-    dynamodb_table = "tf-backend-table"
-  }
-}
-
-
-#### PROVIDER AUTHENTIFICATION ####
-
-provider "vsphere" {
-  user           = var.vsphere_user
-  password       = var.vsphere_password
-  vsphere_server = var.vsphere_server
-  allow_unverified_ssl = true
-}
-
-provider "aws" {
-}
-
-
-#### DATA INFORMATION FROM VCENTER ####
-
-data "vsphere_datacenter" "dc" {
-  name = "dualDC"
-}
-
-data "vsphere_resource_pool" "pool" {
-  name          = "3.year_PROJECTs"
-  datacenter_id = data.vsphere_datacenter.dc.id
-}
-
-data "vsphere_datastore" "datastore" {
-  name          = "3.year_PROJECTS"
-  datacenter_id = data.vsphere_datacenter.dc.id
-}
-
-data "vsphere_network" "network" {
-  name          = "3.year_PROJECTs"
-  datacenter_id = data.vsphere_datacenter.dc.id
-}
-
-data "vsphere_virtual_machine" "template" {
-  name          = "TemplateLinuxCentOS7"
-  datacenter_id = data.vsphere_datacenter.dc.id
-}
-
-
 #### master CREATION ####
 
 resource "vsphere_virtual_machine" "master" {
@@ -83,7 +22,7 @@ resource "vsphere_virtual_machine" "master" {
 
   disk {
     label = "master.vmdk"
-    size  = "20"
+    size  = "100"
     thin_provisioned = true
   }
 

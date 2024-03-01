@@ -23,6 +23,7 @@ variable "vm_count_worker" {
 
 variable "vm_count_master" {
   description = "Number of Master VMs"
-  default     = 1
+  default     = 3
   type        = string
 }
+
