@@ -7,8 +7,8 @@ variables:
   TF_VAR_vsphere_password: "$vsphere_password"
 
 before_script:
-  - cd ${TF_VAR_working_directory}
-  - ls -la ${TF_VAR_working_directory}
+  - cd ${working_directory}
+  - ls -la ${working_directory}
   - sudo yum update -y  
   - sudo yum install -y curl unzip 
   - curl -fsSL https://releases.hashicorp.com/terraform/1.1.0/terraform_1.1.0_linux_amd64.zip -o ${TF_VAR_working_directory}/terraform.zip
