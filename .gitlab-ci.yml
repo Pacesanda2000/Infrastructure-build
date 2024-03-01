@@ -8,7 +8,8 @@ variables:
   #TF_VAR_working_directory: "$vsphere_directory"
 
 before_script:
-  - pwd
+  - echo $WORKING_DIRECTORY
+  - echo $AWS_ACCESS_KEY_ID
   - cd $WORKING_DIRECTORY
   - ls -la $WORKING_DIRECTORY
   - sudo yum update -y  
