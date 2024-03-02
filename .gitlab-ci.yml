@@ -32,9 +32,9 @@ deploy-job:
   stage: deploy    
   script:
     - terraform apply -auto-approve 
-  artifacts:
-    paths:
-      - "terraform.tfstate"
+#  artifacts:
+#    paths:
+#      - "terraform.tfstate"
   when: manual
 
 destroy-job:  
