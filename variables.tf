@@ -45,7 +45,7 @@ variable "vm_memory_worker" {
 
 variable "vm_disk_size_worker" {
   type        = string
-  default     = 20
+  default     = 30
   description = "Number of disk size on worker's VMs"
 }
 
