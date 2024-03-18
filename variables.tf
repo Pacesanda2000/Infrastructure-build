@@ -1,9 +1,9 @@
 #### GENERAL VARIABLES ####
 
-variable "vsphere_user" {
-  type        = string
-  default     = "dmajoros"
-  description = "username"
+variable "vsphere_user" {         #nazov premennej
+  type        = string            #typ premennej
+  default     = "dmajoros"        #hodnota premennej
+  description = "username"        #popis premennej
 }
 
 variable "vsphere_server" {
