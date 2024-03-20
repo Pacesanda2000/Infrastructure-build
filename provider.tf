@@ -12,11 +12,11 @@ terraform {
   }
   required_version = ">= 0.13"
   backend "s3" {
-    bucket         = "tf-backend-gitlab"
+    bucket         = var.bucket_name
     key            = "terraform.tfstate"
-    region         = "eu-west-1"
+    region         = var.region
     encrypt        = true
-    dynamodb_table = "tf-backend-table"
+    dynamodb_table = var.dynamodb_table_name
   }
 }
 

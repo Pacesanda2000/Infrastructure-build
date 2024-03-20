@@ -1,26 +1,44 @@
 #### GENERAL VARIABLES ####
 
-variable "vsphere_user" {         #nazov premennej
-  type        = string            #typ premennej
-  default     = "dmajoros"        #hodnota premennej
-  description = "username"        #popis premennej
+variable "vsphere_user" {             #nazov premennej
+  type        = string                #typ premennej
+  default     = "dmajoros"            #hodnota premennej
+  description = "IT lab username"     #popis premennej
 }
 
 variable "vsphere_server" {
   type        = string
   default     = "172.27.16.210"
-  description = "server"
+  description = "IT lab server IP"
 }
 
 variable "vsphere_password" {
   type        = string
-  description = "password"
+  description = "IT lab password "
 }
 
 variable "vm_folder" {
   type        = string
   default     = "3.rocnik/3.rocnik_projekty/dmajoros"
   description = "Folder where VMs will be placed"
+}
+
+variable "bucket_name" {
+  type        = string
+  default     = "tf-backend-gitlab"
+  description = "Name of S3 bucket in AWS"
+}
+
+variable "region" {
+  type        = string
+  default     = "eu-west-1"
+  description = "Region used in AWS"
+}
+
+variable "dynamodb_table_name" {
+  type        = string
+  default     = "tf-backend-table"
+  description = "Name of DynamoDB table in AWS"
 }
 
 #### WORKER'S VARIABLES ####
