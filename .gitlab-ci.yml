@@ -39,6 +39,3 @@ destroy-job:
   script:
     - terraform destroy -auto-approve 
   when: manual  
-
-
-
