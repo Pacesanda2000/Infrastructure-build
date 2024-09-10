@@ -31,7 +31,7 @@ resource "vsphere_virtual_machine" "master" {
       timeout = 0
       linux_options {
         host_name = "master${count.index + 1}"
-        domain    = "domainXYZ"
+        domain    = "DomainXYZ"
       }
       network_interface {
       }
